@@ -8,12 +8,12 @@ import "bootstrap"
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
-import router from "./assets/router";
+import router from "./router/router";
 
 import axios from 'axios'
 
 
-axios.defaults.baseURL = 'http://localhost/ciwei/'
+axios.defaults.baseURL = 'http://localhost/imos'
 
 const app = createApp(App)
 app.use(ElementPlus)
