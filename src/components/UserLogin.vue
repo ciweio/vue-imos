@@ -5,7 +5,7 @@
         <img src="../assets/icons/ecoplus.png" alt="" width="280"/>
         <form>
           <div class="col-auto">
-            <el-input class="form-input-mobile" v-model="User.username" placeholder="请输入手机号" clearable/>
+            <el-input class="form-input-mobile" v-model="User.mobile" placeholder="请输入手机号" clearable/>
           </div>
           <div class="col-auto">
             <el-input
@@ -39,50 +39,66 @@ export default {
       // show: true,
       // timer: null,
       User: {
-        username: '',
+        mobile: '',
         password: '',
-      }
+      },
     }
   },
   methods: {
-    queryUser() {
-      // let ret = await this.$http.post('login', this.User.username, this.User.password);
-      if (this.User.username === '1' && this.User.password === '1') {
-        this.$router.push('/home');
-        ElMessage({
-          showClose: true,
-          message: '登录成功！',
-          type: 'success',
-          offset: -2
-        });
-        return localStorage.setItem('token', 'Bearer winter');
-      } else if (this.User.username === '' || this.User.password === '') {
+    checkNull() {
+      return !!(this.User.mobile && this.User.password)
+    },
+    async queryUser() {
+      if (this.checkNull()) {
+        let ret = await this.$http.post('user/login' + '?mobile=' + this.User.mobile + '&password=' + this.User.password)
+        // console.log(ret.data)
+        if (ret.data.code === 20000) {
+          this.$router.push('/home/admin').then(r => {
+            ElMessage({
+              showClose: true,
+              message: '登录成功！',
+              type: 'success',
+              offset: -2
+            })
+            return localStorage.setItem('token', 'Bearer winter')
+          })
+        } else if (ret.data.code === 500) {
+          ElMessage({
+            showClose: true,
+            message: '用户不存在！',
+            type: 'error',
+            offset: -2
+          })
+          localStorage.removeItem('token')
+        } else if (ret.data.code === 501) {
+          ElMessage({
+            showClose: true,
+            message: '密码错误！',
+            type: 'error',
+            offset: -2
+          })
+        } else {
+          console.log('unexpected error')
+        }
+      } else {
         ElMessage({
           showClose: true,
           message: '用户名/密码不能为空！',
           type: 'error',
           offset: -2
-        });
-        localStorage.removeItem('token');
-      } else {
-        ElMessage({
-          showClose: true,
-          message: '用户名/密码错误！',
-          type: 'error',
-          offset: -2
-        });
-        localStorage.removeItem('token');
+        })
       }
-    },
+    }
+    ,
     skipRegister() {
-      // this.show = !this.show;
-      // clearTimeout(this.timer);
+      // this.show = !this.show
+      // clearTimeout(this.timer)
       // this.timer = setTimeout(() => {
       //   this.$nextTick(function () {
       //
       //   })
-      // }, 500);
-      this.$router.push('/navigation/register');
+      // }, 500)
+      this.$router.push('/navigation/register')
     }
   }
 }

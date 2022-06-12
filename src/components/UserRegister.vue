@@ -14,7 +14,7 @@
             <input type="text" class="form-control" id="mobile" placeholder="请输入手机号" v-model="User.mobile">
           </div>
           <div class="col-auto mt-3">
-            <input type="email" class="form-control" id="mail" placeholder="请输入邮箱（可选）" v-model="User.mail">
+            <input type="email" class="form-control" id="email" placeholder="请输入邮箱（可选）" v-model="User.email">
           </div>
           <div class="col-auto mt-3">
             <input type="password" class="form-control" id="password" placeholder="请输入密码" v-model="User.password">
@@ -37,7 +37,7 @@
 
 <script>
 import CarouseCard from './CarouselCard.vue'
-import {ElMessage} from "element-plus";
+import {ElMessage} from "element-plus"
 
 export default {
   name: "UserRegister",
@@ -60,7 +60,7 @@ export default {
       User: {
         username: '',
         mobile: '',
-        mail: '',
+        email: '',
         password: '',
       },
       cfm: '',
@@ -74,37 +74,50 @@ export default {
   },
   methods: {
     skipLogin() {
-      this.$router.push('/navigation/login');
+      this.$router.push('/navigation/login')
     },
     checkNull() {
-      return !!(this.User.username && this.User.mobile && this.User.password && this.cfm);
+      return !!(this.User.username && this.User.mobile && this.User.password && this.cfm)
     },
     checkName() {
-      return !!this.User.username.match(this.reg_username);
+      return !!this.User.username.match(this.reg_username)
     },
     checkMobile() {
-      return !!this.User.mobile.match(this.reg_mobile);
+      return !!this.User.mobile.match(this.reg_mobile)
     },
     checkPassword() {
-      return !!this.User.password.match(this.reg_password);
+      return !!this.User.password.match(this.reg_password)
     },
     verifyPassword() {
-      return this.User.password === this.cfm;
+      return this.User.password === this.cfm
     },
-    addUser() {
+    async addUser() {
       if (this.checkNull()) {
         if (this.checkName()) {
           if (this.checkMobile()) {
             if (this.checkPassword()) {
               if (this.verifyPassword()) {
-                // let ret = await this.$http.put('login', this.User);
-                this.$router.push('/home')
-                ElMessage({
-                  showClose: true,
-                  message: '注册成功！已为您自动跳转到登录页',
-                  type: 'success',
-                  offset: -2
-                })
+                let ret = await this.$http.post('user/register', this.User)
+                // console.log(ret.data)
+                if (ret.data.code === 20000) {
+                  this.$router.push('/home/user').then(r => {
+                    ElMessage({
+                      showClose: true,
+                      message: '注册成功！已为您自动跳转到主页',
+                      type: 'success',
+                      offset: -2
+                    })
+                  })
+                } else if (ret.data.code === 500) {
+                  ElMessage({
+                    showClose: true,
+                    message: '手机号已被占用！',
+                    type: 'error',
+                    offset: -2
+                  })
+                } else {
+                  console.log('unexpected error')
+                }
               } else {
                 ElMessage({
                   showClose: true,
@@ -220,7 +233,7 @@ export default {
           background-position: 5px 7px;
         }
 
-        #mail {
+        #email {
           background-image: url("../assets/icons/icon_register/tubiao_youxiang.svg");
           background-repeat: no-repeat;
           background-size: 8%;

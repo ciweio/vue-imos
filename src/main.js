@@ -13,7 +13,7 @@ import router from "./router/router";
 import axios from 'axios'
 
 
-axios.defaults.baseURL = 'http://localhost/imos'
+axios.defaults.baseURL = 'http://localhost:6060'
 
 const app = createApp(App)
 app.use(ElementPlus)

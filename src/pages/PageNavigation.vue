@@ -1,22 +1,24 @@
 <template>
-  <div class="header">
-    <img src="../assets/icons/blossom.png" alt="" width="26"/>
-    <span>社区防疫服务中心</span>
-  </div>
+  <div class="navigation">
+    <div class="header">
+      <img src="../assets/icons/blossom.png" alt="" width="26"/>
+      <span>防疫物资管理</span>
+    </div>
 
-  <div class="view">
-    <router-view v-slot="{ Component }">
-      <transition name="fade" mode="out-in">
-        <component :is="Component"/>
-      </transition>
-    </router-view>
-  </div>
+    <div class="view">
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component"/>
+        </transition>
+      </router-view>
+    </div>
 
-  <div class="footer">
-    <span>open-source:&nbsp;</span>
-    <a href="https://github.com/ciweio/vue-imos.git">
-      <img src="../assets/icons/github.svg" alt="" width="30"/>
-    </a>
+    <div class="footer">
+      <span>open-source:&nbsp;</span>
+      <a href="https://github.com/ciweio/vue-imos.git">
+        <img src="../assets/icons/github.svg" alt="" width="30"/>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -37,8 +39,8 @@ export default {
   // },
   // mounted() {
   //   window.addEventListener("load", () => {
-  //     this.$router.push('/');
-  //   });
+  //     this.$router.push('/')
+  //   })
   // },
 }
 </script>

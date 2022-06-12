@@ -13,12 +13,12 @@ export default {
   props: ['adgroup'],
   data() {
     return {
-      imgs: []
+      imgs: [],
     }
   },
   created() {
     this.imgs = this.adgroup
-  }
+  },
 }
 </script>
 
