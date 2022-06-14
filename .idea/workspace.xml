@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a43ff3bd-37eb-4c19-aad7-530611da5dd0" name="Changes" comment="connect the front to the back end">
+    <list default="true" id="a43ff3bd-37eb-4c19-aad7-530611da5dd0" name="Changes" comment="edit readme">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/img/register_demo1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/register/register_demo1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/img/register_demo2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/register/register_demo2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/img/register_demo3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/register/register_demo3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserLogin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserLogin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserRegister.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserRegister.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/HomeAdmin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/HomeAdmin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/user/HomeUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/HomeUser.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/router.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,31 +45,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Projects/WebStorm/vue-imos/src/assets/icons/icon_register&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\JetBrains\\apps\\WebStorm\\ch-0\\221.5591.52\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/Projects/WebStorm/vue-imos/src/assets/img",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "D:\\JetBrains\\apps\\WebStorm\\ch-0\\221.5591.52\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Projects\WebStorm\vue-imos\src\assets\img" />
+      <recent name="E:\Projects\WebStorm\vue-imos\src\assets\img\register" />
       <recent name="E:\Projects\WebStorm\vue-imos\src\assets\icons\icon_register" />
       <recent name="E:\Projects\WebStorm\vue-imos\src\assets\icons" />
-      <recent name="E:\Projects\WebStorm\vue-imos\src\assets\img" />
       <recent name="E:\Projects\WebStorm\vue-imos\src\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Projects\WebStorm\vue-imos\src\components\admin" />
+      <recent name="E:\Projects\WebStorm\vue-imos\src\assets\img" />
+      <recent name="E:\Projects\WebStorm\vue-imos\src\assets\img\register" />
       <recent name="E:\Projects\WebStorm\vue-imos\src\router" />
       <recent name="E:\Projects\WebStorm\vue-imos\src\components" />
-      <recent name="E:\Projects\WebStorm\vue-imos\src\pages" />
-      <recent name="E:\Projects\WebStorm\vue-imos\src\assets\img" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -79,7 +92,10 @@
       <workItem from="1654909787700" duration="45020000" />
       <workItem from="1654956580883" duration="21000" />
       <workItem from="1654956604503" duration="250000" />
-      <workItem from="1654994212441" duration="14592000" />
+      <workItem from="1654994212441" duration="37306000" />
+      <workItem from="1655036728659" duration="9856000" />
+      <workItem from="1655080881074" duration="41480000" />
+      <workItem from="1655168760204" duration="14097000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1654654616266</created>
@@ -102,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655011171077</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="edit readme">
+      <created>1655011455195</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1655011455195</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,6 +146,7 @@
     <MESSAGE value="init" />
     <MESSAGE value="login&amp;register" />
     <MESSAGE value="connect the front to the back end" />
-    <option name="LAST_COMMIT_MESSAGE" value="connect the front to the back end" />
+    <MESSAGE value="edit readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit readme" />
   </component>
 </project>

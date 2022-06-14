@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import {ElMessage} from 'element-plus'
+import {ElNotification} from 'element-plus'
 import {nextTick, ref} from 'vue'
 
 const input = ref('')
@@ -52,41 +52,44 @@ export default {
       if (this.checkNull()) {
         let ret = await this.$http.post('user/login' + '?mobile=' + this.User.mobile + '&password=' + this.User.password)
         // console.log(ret.data)
+        console.log(ret.data)
         if (ret.data.code === 20000) {
           this.$router.push('/home/admin').then(r => {
-            ElMessage({
-              showClose: true,
+            ElNotification({
+              title: 'Success',
               message: '登录成功！',
               type: 'success',
-              offset: -2
+              offset: 50,
             })
             return localStorage.setItem('token', 'Bearer winter')
           })
         } else if (ret.data.code === 500) {
-          ElMessage({
-            showClose: true,
+          ElNotification({
+            title: 'Error',
             message: '用户不存在！',
             type: 'error',
-            offset: -2
+            offset: 50,
           })
           localStorage.removeItem('token')
         } else if (ret.data.code === 501) {
-          ElMessage({
-            showClose: true,
+          ElNotification({
+            title: 'Error',
             message: '密码错误！',
             type: 'error',
-            offset: -2
+            offset: 50,
           })
+          localStorage.removeItem('token')
         } else {
           console.log('unexpected error')
         }
       } else {
-        ElMessage({
-          showClose: true,
+        ElNotification({
+          title: 'Error',
           message: '用户名/密码不能为空！',
           type: 'error',
-          offset: -2
+          offset: 50,
         })
+        localStorage.removeItem('token')
       }
     }
     ,

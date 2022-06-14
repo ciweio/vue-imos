@@ -46,15 +46,15 @@ export default {
       adgroup: [
         {
           id: '0',
-          url: 'src/assets/img/register_demo1.jpg',
+          url: 'src/assets/img/register/register_demo1.jpg',
         },
         {
           id: '1',
-          url: 'src/assets/img/register_demo2.jpg',
+          url: 'src/assets/img/register/register_demo2.jpg',
         },
         {
           id: '2',
-          url: 'src/assets/img/register_demo3.jpg',
+          url: 'src/assets/img/register/register_demo3.jpg',
         },
       ],
       User: {
@@ -108,6 +108,7 @@ export default {
                       offset: -2
                     })
                   })
+                  return localStorage.setItem('token', 'Bearer winter')
                 } else if (ret.data.code === 500) {
                   ElMessage({
                     showClose: true,
@@ -115,8 +116,10 @@ export default {
                     type: 'error',
                     offset: -2
                   })
+                  localStorage.removeItem('token')
                 } else {
                   console.log('unexpected error')
+                  localStorage.removeItem('token')
                 }
               } else {
                 ElMessage({
@@ -125,6 +128,7 @@ export default {
                   type: 'error',
                   offset: -2
                 })
+                localStorage.removeItem('token')
               }
             } else {
               ElMessage({
@@ -133,6 +137,7 @@ export default {
                 type: 'error',
                 offset: -2
               })
+              localStorage.removeItem('token')
             }
           } else {
             ElMessage({
@@ -141,6 +146,7 @@ export default {
               type: 'error',
               offset: -2
             })
+            localStorage.removeItem('token')
           }
         } else {
           ElMessage({
@@ -149,6 +155,7 @@ export default {
             type: 'error',
             offset: -2
           })
+          localStorage.removeItem('token')
         }
       } else {
         ElMessage({
@@ -157,6 +164,7 @@ export default {
           type: 'error',
           offset: -2
         })
+        localStorage.removeItem('token')
       }
     }
   }

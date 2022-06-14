@@ -7,6 +7,7 @@ import "bootstrap"
 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import '@element-plus/icons-vue'
 
 import router from "./router/router";
 
