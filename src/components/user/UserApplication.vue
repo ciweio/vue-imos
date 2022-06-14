@@ -1,0 +1,185 @@
+<template>
+  <div>
+    <button type="button" class="btn btn-light" @click="addApp">申领物资</button>
+    <el-tabs style="height: 580px" class="demo-tabs">
+      <el-table :data="applied" style="width: 100%" max-height="520">
+        <el-table-column prop="rid" label="序号" width="120" sortable/>
+        <el-table-column prop="rname" label="申领物资" width="200" sortable/>
+        <el-table-column prop="rtype" label="物资种类" width="200" sortable/>
+        <el-table-column prop="num" label="申领数量" width="150" sortable/>
+        <el-table-column prop="sdate" label="申领日期" width="260" sortable/>
+        <el-table-column prop="udate" label="审核时间" width="260" sortable/>
+        <el-table-column prop="isstate" label="状态" width="140" sortable/>
+        <el-table-column width="160" fixed="right">
+          <template #header>
+            <input class="form-control header-ele" v-model="queryField" placeholder="Search"
+                   @keyup.enter="selectField"/>
+          </template>
+          <template #default="scope">
+            <el-button plain class="el-button" @click="edit(scope.row)">编辑</el-button>
+            <el-button type="danger" plain class="el-button" @click="del(scope.row.rid)">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-tabs>
+
+    <el-dialog v-model="editVisible" title="编辑申领单" width="20%">
+      <el-form :model="edit_form">
+        <el-form-item label="申领物资">
+          <el-input v-model="edit_form.rname" autocomplete="off"/>
+        </el-form-item>
+        <el-form-item label="物资种类">
+          <el-select v-model="edit_form.rtype" placeholder="请选择物资种类">
+            <el-option label="食物" value="食物"/>
+            <el-option label="医用品" value="医用品"/>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="申领数量">
+          <el-input v-model="edit_form.num" autocomplete="off"/>
+        </el-form-item>
+      </el-form>
+      <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="editVisible = false">取消</el-button>
+        <el-button type="primary" @click="subedit">确认</el-button>
+      </span>
+      </template>
+    </el-dialog>
+
+    <el-dialog v-model="addVisible" title="申领物资" width="20%">
+      <el-form :model="add_form">
+        <el-form-item label="申领物资">
+          <el-input v-model="add_form.rname" autocomplete="off"/>
+        </el-form-item>
+        <el-form-item label="物资种类">
+          <el-select v-model="add_form.rtype" placeholder="请选择物资种类">
+            <el-option label="食物" value="食物"/>
+            <el-option label="医用品" value="医用品"/>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="申领数量">
+          <el-input v-model="add_form.num" autocomplete="off"/>
+        </el-form-item>
+      </el-form>
+      <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="addVisible = false">取消</el-button>
+        <el-button type="primary" @click="subadd">确认</el-button>
+      </span>
+      </template>
+    </el-dialog>
+  </div>
+</template>
+
+<script>
+import {ElMessage, ElMessageBox} from "element-plus";
+import {reactive, ref} from 'vue'
+
+export default {
+  name: "UserApplication",
+  data() {
+    return {
+      token: 0,
+      applied: [],
+      queryField: '',
+
+      editVisible: ref(false),
+      addVisible: ref(false),
+      formLabelWidth: '200px',
+      edit_form: reactive({
+        rname: '',
+        rtype: '',
+        num: 0
+      }),
+      add_form: reactive({
+        rname: '',
+        rtype: '',
+        num: 0
+      }),
+    }
+  },
+  async created() {
+    this.token = localStorage.getItem('token')
+    console.log(this.token)
+    let ret = await this.$http.get('things/list')
+    this.applied = ret.data.data
+  },
+  methods: {
+    addApp() {
+      this.addVisible = true
+    },
+    subadd() {
+      if (this.add_form.num > 0) {
+        this.addVisible = false
+        console.log(this.add_form)
+      } else {
+        ElMessageBox({
+          title: 'Error',
+          message: '最少申领一个！',
+          type: 'error',
+          offset: 50,
+        })
+      }
+    },
+    edit(row) {
+      this.edit_form = row
+      this.editVisible = true
+    },
+    subedit() {
+      this.editVisible = false
+      console.log(this.edit_form)
+    },
+    del(id) {
+      console.log(id)
+      ElMessageBox.confirm(
+          '确认删除？',
+          '提示',
+          {
+            confirmButtonText: '确认',
+            cancelButtonText: '取消',
+            type: 'error',
+          }
+      ).then(() => {
+        ElMessage({
+          type: 'success',
+          message: '删除成功！',
+        })
+      }).catch(() => {
+        // ElMessage({
+        //   type: 'info',
+        //   message: '审批取消',
+        // })
+      })
+    },
+    selectField() {
+      console.log(this.queryField)
+      this.queryField = ''
+    }
+  }
+}
+</script>
+
+<style scoped>
+.btn {
+  position: absolute;
+  top: 70px;
+  left: 850px;
+  color: #CC95C0;
+}
+
+.el-button--text {
+  margin-right: 15px;
+}
+
+.el-select {
+  width: 300px;
+}
+
+.el-input {
+  width: 300px;
+}
+
+.dialog-footer button:first-child {
+  margin-right: 10px;
+}
+</style>

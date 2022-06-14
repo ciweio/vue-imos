@@ -28,9 +28,6 @@
 
 <script>
 import {ElNotification} from 'element-plus'
-import {nextTick, ref} from 'vue'
-
-const input = ref('')
 
 export default {
   name: "UserLogin",
@@ -41,27 +38,25 @@ export default {
       User: {
         mobile: '',
         password: '',
+        token: {},
       },
     }
   },
   methods: {
-    checkNull() {
-      return !!(this.User.mobile && this.User.password)
-    },
     async queryUser() {
-      if (this.checkNull()) {
+      if (!!(this.User.mobile && this.User.password)) {
         let ret = await this.$http.post('user/login' + '?mobile=' + this.User.mobile + '&password=' + this.User.password)
         // console.log(ret.data)
         console.log(ret.data)
         if (ret.data.code === 20000) {
-          this.$router.push('/home/admin').then(r => {
+          localStorage.setItem('token', ret.data.data.uid)
+          this.$router.push('/home/user').then(() => {
             ElNotification({
               title: 'Success',
               message: '登录成功！',
               type: 'success',
               offset: 50,
             })
-            return localStorage.setItem('token', 'Bearer winter')
           })
         } else if (ret.data.code === 500) {
           ElNotification({

@@ -2,7 +2,7 @@
   <el-carousel height="540px" :interval="5000" pause-on-hover>
     <el-carousel-item v-for="item in imgs" :key="item.id">
       <img :src="item.url" alt="" v-if="item" class="carousel">
-      <h3 text="2xl" justify="center" v-else>{{ item.url }}</h3>
+      <h3 v-else>{{ item.url }}</h3>
     </el-carousel-item>
   </el-carousel>
 </template>

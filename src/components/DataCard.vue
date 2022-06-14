@@ -2,7 +2,7 @@
   <div class="adcard" v-for="(o, index) in 3" :key="o">
     <el-col>
       <el-card :body-style="{ padding: '0px' }">
-        <img src="src/assets/img/demo.jpeg"
+        <img src="../../src/assets/img/demo.jpeg"
              class="image" alt=""/>
         <div style="padding: 14px">
           <span>TestText</span>

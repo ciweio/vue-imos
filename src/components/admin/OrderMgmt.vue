@@ -16,7 +16,7 @@
                    @keyup.enter="selectField_d"/>
           </template>
           <template #default="scope">
-            <el-button class="el-button" @click="approval(scope.row.did)">审批</el-button>
+            <el-button class="el-button" @click="approval(scope.row.did)" :disabled="scope.row.state">审批</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -35,7 +35,8 @@
                    @keyup.enter="selectField_a"/>
           </template>
           <template #default="scope">
-            <el-button class="el-button" @click="approval(scope.row.did)">审批</el-button>
+            <el-button class="el-button" @click="approval(scope.row.rid)" :disabled="scope.row.isState ===1">审批
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -107,13 +108,6 @@ export default {
 </script>
 
 <style scoped>
-.demo-tabs > .el-tabs__content {
-  padding: 10px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 100;
-}
-
 .header-ele {
   width: 130px;
   height: 30px;

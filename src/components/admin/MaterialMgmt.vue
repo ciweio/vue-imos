@@ -90,8 +90,8 @@ export default {
     }
   },
   async created() {
-    let ret1 = await this.$http.get('things/list')
-    let ret2 = await this.$http.get('things/list')
+    let ret1 = await this.$http.get('things/listType' + '?type=' + '食品类')
+    let ret2 = await this.$http.get('things/listType' + '?type=' + '医用类')
     this.foodstuff = ret1.data.data
     this.material = ret2.data.data
   },

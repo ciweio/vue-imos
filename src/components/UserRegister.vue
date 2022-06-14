@@ -17,10 +17,12 @@
             <input type="email" class="form-control" id="email" placeholder="请输入邮箱（可选）" v-model="User.email">
           </div>
           <div class="col-auto mt-3">
-            <input type="password" class="form-control" id="password" placeholder="请输入密码" v-model="User.password">
+            <input autocomplete=“off” type="password" class="form-control" id="password" placeholder="请输入密码"
+                   v-model="User.password">
           </div>
           <div class="col-auto mt-3">
-            <input type="password" class="form-control" id="confirm" placeholder="请确认密码" v-model="cfm">
+            <input autocomplete=“off” type="password" class="form-control" id="confirm" placeholder="请确认密码"
+                   v-model="cfm">
           </div>
           <div class="col-auto mt-5">
             <button type="button" class="btn btn-primary mb-3" @click="addUser">注册</button>
@@ -46,15 +48,15 @@ export default {
       adgroup: [
         {
           id: '0',
-          url: 'src/assets/img/register/register_demo1.jpg',
+          url: '../../src/assets/img/register/register_demo1.jpg',
         },
         {
           id: '1',
-          url: 'src/assets/img/register/register_demo2.jpg',
+          url: '../../src/assets/img/register/register_demo2.jpg',
         },
         {
           id: '2',
-          url: 'src/assets/img/register/register_demo3.jpg',
+          url: '../../src/assets/img/register/register_demo3.jpg',
         },
       ],
       User: {
@@ -76,39 +78,25 @@ export default {
     skipLogin() {
       this.$router.push('/navigation/login')
     },
-    checkNull() {
-      return !!(this.User.username && this.User.mobile && this.User.password && this.cfm)
-    },
-    checkName() {
-      return !!this.User.username.match(this.reg_username)
-    },
-    checkMobile() {
-      return !!this.User.mobile.match(this.reg_mobile)
-    },
-    checkPassword() {
-      return !!this.User.password.match(this.reg_password)
-    },
-    verifyPassword() {
-      return this.User.password === this.cfm
-    },
     async addUser() {
-      if (this.checkNull()) {
-        if (this.checkName()) {
-          if (this.checkMobile()) {
-            if (this.checkPassword()) {
-              if (this.verifyPassword()) {
+      if (!!(this.User.username && this.User.mobile && this.User.password && this.cfm)) {
+        if (!!this.User.username.match(this.reg_username)) {
+          if (!!this.User.mobile.match(this.reg_mobile)) {
+            if (!!this.User.password.match(this.reg_password)) {
+              if (this.User.password === this.cfm) {
                 let ret = await this.$http.post('user/register', this.User)
                 // console.log(ret.data)
                 if (ret.data.code === 20000) {
-                  this.$router.push('/home/user').then(r => {
+                  localStorage.setItem('token', ret.data.data.uid)
+                  this.$router.push('/home/user').then(() => {
                     ElMessage({
                       showClose: true,
                       message: '注册成功！已为您自动跳转到主页',
                       type: 'success',
                       offset: -2
                     })
+                    console.log(localStorage.getItem('token'))
                   })
-                  return localStorage.setItem('token', 'Bearer winter')
                 } else if (ret.data.code === 500) {
                   ElMessage({
                     showClose: true,

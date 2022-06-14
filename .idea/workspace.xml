@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a43ff3bd-37eb-4c19-aad7-530611da5dd0" name="Changes" comment="edit readme">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="a43ff3bd-37eb-4c19-aad7-530611da5dd0" name="Changes" comment="admin finished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/register_demo1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/register/register_demo1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/register_demo2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/register/register_demo2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/register_demo3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/register/register_demo3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CarouselCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarouselCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DataCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DeleteButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DeleteButton.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserLogin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserLogin.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserRegister.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserRegister.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/HomeAdmin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/HomeAdmin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/MaterialMgmt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/MaterialMgmt.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/ModifyMaterial.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/ModifyMaterial.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/OrderMgmt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/OrderMgmt.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/UserMgmt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/UserMgmt.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/user/HomeUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/HomeUser.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/router.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +93,7 @@
       <workItem from="1654994212441" duration="37306000" />
       <workItem from="1655036728659" duration="9856000" />
       <workItem from="1655080881074" duration="41480000" />
-      <workItem from="1655168760204" duration="14097000" />
+      <workItem from="1655168760204" duration="33795000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1654654616266</created>
@@ -125,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655011455195</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="admin finished">
+      <created>1655184502800</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1655184502800</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +152,7 @@
     <MESSAGE value="login&amp;register" />
     <MESSAGE value="connect the front to the back end" />
     <MESSAGE value="edit readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit readme" />
+    <MESSAGE value="admin finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin finished" />
   </component>
 </project>

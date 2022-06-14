@@ -4,7 +4,6 @@
 
 <script lang="ts" setup>
 import {ElMessage, ElMessageBox} from 'element-plus'
-import axios from "axios";
 
 const open = () => {
   ElMessageBox.confirm(

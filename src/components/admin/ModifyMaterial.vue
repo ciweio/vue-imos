@@ -63,8 +63,8 @@ export default {
   },
   methods: {
     modifyMedical() {
-      this.visible = true
       this.material = this.row
+      this.visible = true
     },
     subedit() {
       console.log(this.material)

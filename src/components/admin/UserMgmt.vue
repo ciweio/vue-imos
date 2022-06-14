@@ -51,10 +51,5 @@ export default {
 </script>
 
 <style scoped>
-.demo-tabs > .el-tabs__content {
-  padding: 10px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 100;
-}
+
 </style>
