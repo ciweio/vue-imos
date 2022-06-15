@@ -18,11 +18,11 @@
         <el-table-column>
           <template #header>
             <input class="form-control header-ele" v-model="queryField" placeholder="Search"
-                   @keyup.enter="selectField_f"/>
+                   @keyup.enter="selectField_f" @blur="restore"/>
           </template>
           <template #default="scope">
             <modify-button :row="scope.row">编辑</modify-button>
-            <delete-button @click="del(scope.row.mid)">删除</delete-button>
+            <el-button @click="del(scope.row.mid)" type="danger">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -47,11 +47,11 @@
         <el-table-column>
           <template #header>
             <input class="form-control header-ele" v-model="queryField" placeholder="Search"
-                   @keyup.enter="selectField_m"/>
+                   @keyup.enter="selectField_m" @blur="restore"/>
           </template>
           <template #default="scope">
             <modify-button :row="scope.row">编辑</modify-button>
-            <delete-button @click="del(scope.row.mid)">删除</delete-button>
+            <el-button @click="del(scope.row.mid)" type="danger">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -72,14 +72,13 @@
 
 <script>
 import ModifyButton from './ModifyMaterial.vue'
-import DeleteButton from '../DeleteButton.vue'
 import AddMaterial from './AddMaterial.vue'
+import {ElMessage, ElMessageBox} from "element-plus";
 
 export default {
   name: "MaterialMgmt",
   components: {
     ModifyButton,
-    DeleteButton,
     AddMaterial
   },
   data() {
@@ -90,22 +89,57 @@ export default {
     }
   },
   async created() {
-    let ret1 = await this.$http.get('things/listType' + '?type=' + '食品类')
-    let ret2 = await this.$http.get('things/listType' + '?type=' + '医用类')
-    this.foodstuff = ret1.data.data
-    this.material = ret2.data.data
+    await this.dataFlush()
   },
   methods: {
-    del(id) {
+    async dataFlush() {
+      let ret1 = await this.$http.get('things/listType' + '?type=' + '食品类')
+      let ret2 = await this.$http.get('things/listType' + '?type=' + '医用类')
+      this.foodstuff = ret1.data.data
+      this.material = ret2.data.data
+    },
+    async del(id) {
       console.log(id)
+      ElMessageBox.confirm(
+          '确认删除？',
+          'Warning',
+          {
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+            type: 'warning',
+          }
+      )
+          .then(async () => {
+            let ret = await this.$http.delete('/things' + '/' + id)
+            console.log(ret)
+            ElMessage({
+              type: 'success',
+              message: '删除成功！',
+            })
+          })
+          .catch(() => {
+            // ElMessage({
+            //   type: 'info',
+            //   message: 'Delete canceled',
+            // })
+          })
     },
-    selectField_f() {
-      console.log(this.queryField)
+    async selectField_f() {
+      let ret = await this.$http.post('things/check' + '?mname=' + this.queryField)
+      // console.log(ret.data.data)
+      // console.log(this.queryField)
+      this.foodstuff = ret.data.data
       this.queryField = ''
     },
-    selectField_m() {
-      console.log(this.queryField)
+    async selectField_m() {
+      let ret = await this.$http.post('things/check' + '?mname=' + this.queryField)
+      // console.log(ret.data.data)
+      // console.log(this.queryField)
+      this.material = ret.data.data
       this.queryField = ''
+    },
+    async restore() {
+      await this.dataFlush()
     },
   },
 }

@@ -43,7 +43,6 @@
 import {ref} from 'vue'
 import {ElButton, ElDialog} from 'element-plus'
 
-
 export default {
   props: ['row'],
   data() {
@@ -66,8 +65,10 @@ export default {
       this.material = this.row
       this.visible = true
     },
-    subedit() {
-      console.log(this.material)
+    async subedit() {
+      let ret = await this.$http.post('/things/update', this.material)
+      console.log(ret)
+      this.visible = false
     }
   }
 }

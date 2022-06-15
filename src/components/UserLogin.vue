@@ -50,14 +50,25 @@ export default {
         console.log(ret.data)
         if (ret.data.code === 20000) {
           localStorage.setItem('token', ret.data.data.uid)
-          this.$router.push('/home/user').then(() => {
-            ElNotification({
-              title: 'Success',
-              message: '登录成功！',
-              type: 'success',
-              offset: 50,
+          if (ret.data.data.type === 0) {
+            this.$router.push('/home/admin').then(() => {
+              ElNotification({
+                title: 'Success',
+                message: '登录成功！',
+                type: 'success',
+                offset: 50,
+              })
             })
-          })
+          } else {
+            this.$router.push('/home/user').then(() => {
+              ElNotification({
+                title: 'Success',
+                message: '登录成功！',
+                type: 'success',
+                offset: 50,
+              })
+            })
+          }
         } else if (ret.data.code === 500) {
           ElNotification({
             title: 'Error',

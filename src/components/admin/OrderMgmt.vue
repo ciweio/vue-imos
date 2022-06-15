@@ -10,13 +10,10 @@
         <el-table-column prop="count" label="捐赠数量" width="120" sortable/>
         <el-table-column prop="findate" label="提交日期" width="180" sortable/>
         <el-table-column prop="state" label="处理状态" width="120" sortable/>
-        <el-table-column width="150" fixed="right">
-          <template #header>
-            <input class="form-control header-ele" v-model="queryField" placeholder="Search"
-                   @keyup.enter="selectField_d"/>
-          </template>
+        <el-table-column label="处理状态" width="150" fixed="right">
           <template #default="scope">
-            <el-button class="el-button" @click="approval(scope.row.did)" :disabled="scope.row.state">审批</el-button>
+            <el-button class="el-button" @click="approval(scope.row.did)" :disabled="scope.row.state === 1">审批
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -67,7 +64,7 @@ export default {
     }
   },
   async created() {
-    let ret1 = await this.$http.get('things/list')
+    let ret1 = await this.$http.get('donation/list')
     let ret2 = await this.$http.get('things/list')
     this.donation = ret1.data.data
     this.application = ret2.data.data
@@ -83,7 +80,9 @@ export default {
             cancelButtonText: '取消',
             type: 'warning',
           }
-      ).then(() => {
+      ).then(async () => {
+        let ret = await this.$http.get('donation/deal' + '?' + 'did=' + id)
+        console.log(ret.data)
         ElMessage({
           type: 'success',
           message: '审批成功！',
@@ -94,10 +93,6 @@ export default {
           message: '审批取消',
         })
       })
-    },
-    selectField_d() {
-      console.log(this.queryField)
-      this.queryField = ''
     },
     selectField_a() {
       console.log(this.queryField)

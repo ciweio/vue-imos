@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a43ff3bd-37eb-4c19-aad7-530611da5dd0" name="Changes" comment="admin finished">
+    <list default="true" id="a43ff3bd-37eb-4c19-aad7-530611da5dd0" name="Changes" comment="user finished -&gt; all finished(excluding interface)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CarouselCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarouselCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DataCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DeleteButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DeleteButton.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DeleteButton.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserLogin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserLogin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserRegister.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserRegister.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/AddMaterial.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/AddMaterial.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/admin/MaterialMgmt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/MaterialMgmt.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/admin/ModifyMaterial.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/ModifyMaterial.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/admin/OrderMgmt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/OrderMgmt.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/admin/UserMgmt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/UserMgmt.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/user/HomeUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/HomeUser.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/user/UserDonation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/UserDonation.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +28,12 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -43,19 +48,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/Projects/WebStorm/vue-imos/src/assets/img",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "D:\\JetBrains\\apps\\WebStorm\\ch-0\\221.5591.52\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Projects/WebStorm/vue-imos/src/assets/img&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\JetBrains\\apps\\WebStorm\\ch-0\\221.5591.52\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Projects\WebStorm\vue-imos\src\assets\img" />
@@ -93,7 +98,9 @@
       <workItem from="1654994212441" duration="37306000" />
       <workItem from="1655036728659" duration="9856000" />
       <workItem from="1655080881074" duration="41480000" />
-      <workItem from="1655168760204" duration="33795000" />
+      <workItem from="1655168760204" duration="33995000" />
+      <workItem from="1655205510777" duration="10439000" />
+      <workItem from="1655253508832" duration="5100000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1654654616266</created>
@@ -130,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655184502800</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="user finished -&gt; all finished(excluding interface)">
+      <created>1655204525339</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655204525339</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +167,7 @@
     <MESSAGE value="connect the front to the back end" />
     <MESSAGE value="edit readme" />
     <MESSAGE value="admin finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin finished" />
+    <MESSAGE value="user finished -&gt; all finished(excluding interface)" />
+    <option name="LAST_COMMIT_MESSAGE" value="user finished -&gt; all finished(excluding interface)" />
   </component>
 </project>

@@ -7,15 +7,11 @@
         <el-table-column prop="mname" label="捐赠物资" width="200" sortable/>
         <el-table-column prop="type" label="物资种类" width="200" sortable/>
         <el-table-column prop="count" label="捐赠数量" width="200" sortable/>
-        <el-table-column prop="sdate" label="捐赠日期" width="260" sortable/>
-        <el-table-column prop="findate" label="审核状态" width="200" sortable/>
-        <el-table-column width="160" fixed="right">
-          <template #header>
-            <input class="form-control header-ele" v-model="queryField" placeholder="Search"
-                   @keyup.enter="selectField"/>
-          </template>
+        <el-table-column prop="findate" label="审核时间" width="260" sortable/>
+        <el-table-column prop="state" label="审核状态" width="200" sortable/>
+        <el-table-column label="操作" width="160" fixed="right">
           <template #default="scope">
-            <el-button plain class="el-button" @click="edit(scope.row)">编辑</el-button>
+            <el-button plain class="el-button" @click="edit(scope.row)" :disabled="scope.row.state === 1">编辑</el-button>
             <el-button type="danger" plain class="el-button" @click="del(scope.row.did)">删除</el-button>
           </template>
         </el-table-column>
@@ -80,7 +76,6 @@ export default {
     return {
       token: 0,
       donated: [],
-      queryField: '',
 
       editVisible: ref(false),
       addVisible: ref(false),
@@ -91,6 +86,7 @@ export default {
         count: 0
       }),
       add_form: reactive({
+        uid: 0,
         mname: '',
         type: '',
         count: 0
@@ -100,17 +96,21 @@ export default {
   async created() {
     this.token = localStorage.getItem('token')
     console.log(this.token)
-    let ret = await this.$http.get('things/list')
+    let ret = await this.$http.get('donation/checkByUid/' + this.token)
     this.donated = ret.data.data
   },
   methods: {
     addDo() {
       this.addVisible = true
     },
-    subadd() {
+    async subadd() {
       if (this.add_form.count > 0) {
         this.addVisible = false
-        console.log(this.add_form)
+        // console.log(this.add_form)
+        this.add_form.uid = localStorage.getItem('token')
+        // console.log(this.add_form)
+        let ret = await this.$http.post('/donation/add', this.add_form)
+        console.log(ret)
       } else {
         ElMessageBox({
           title: 'Error',
@@ -123,12 +123,17 @@ export default {
     edit(row) {
       this.edit_form = row
       this.editVisible = true
-    },
-    subedit() {
-      this.editVisible = false
       console.log(this.edit_form)
     },
+    async subedit() {
+      console.log(this.edit_form)
+      let ret = await this.$http.post('/donation/update', this.edit_form)
+      console.log(ret)
+
+      this.editVisible = false
+    },
     del(id) {
+      console.log(id)
       ElMessageBox.confirm(
           '确认删除？',
           '提示',
@@ -137,8 +142,9 @@ export default {
             cancelButtonText: '取消',
             type: 'error',
           }
-      ).then(() => {
-        console.log(id)
+      ).then(async () => {
+        let ret = await this.$http.delete('/donation/' + id)
+        console.log(ret)
         ElMessage({
           type: 'success',
           message: '删除成功！',
@@ -150,10 +156,6 @@ export default {
         // })
       })
     },
-    selectField() {
-      console.log(this.queryField)
-      this.queryField = ''
-    }
   }
 }
 </script>

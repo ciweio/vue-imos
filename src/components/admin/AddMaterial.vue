@@ -31,25 +31,32 @@
   </el-drawer>
 </template>
 
-<script lang="ts" setup>
+<script>
 import {ref} from 'vue'
 import {ElButton, ElDrawer} from 'element-plus'
 
-const drawer = ref(false)
-const direction = 'btt'
-const size = 250
-let material = ref(
-    {
-      mname: '',
-      picture: '',
-      count: '',
-      code: '',
-      type: ''
+export default {
+  data() {
+    return {
+      drawer: ref(false),
+      direction: 'btt',
+      size: 250,
+      material: ref({
+        mname: '',
+        picture: '',
+        count: '',
+        code: '',
+        type: ''
+      })
     }
-)
-
-function AddMaterial() {
-  console.log(material)
+  },
+  methods: {
+    async AddMaterial() {
+      let ret = await this.$http.post('/things/add', this.material)
+      console.log(ret)
+      this.drawer = false
+    }
+  }
 }
 </script>
 
