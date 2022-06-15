@@ -5,7 +5,7 @@
         <img src="../../src/assets/img/demo.jpeg"
              class="image" alt=""/>
         <div style="padding: 14px">
-          <span>TestText</span>
+          <span>防疫站</span>
           <div class="bottom">
             <time class="time">{{ currentDate }}</time>
             <el-tooltip content="175XXXXXXXX" effect="customized" placement="right">

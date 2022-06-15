@@ -111,6 +111,14 @@ export default {
         // console.log(this.add_form)
         let ret = await this.$http.post('/donation/add', this.add_form)
         console.log(ret)
+        if (ret.data.code === 20000) {
+          ElMessage({
+            type: 'success',
+            message: '捐赠成功！',
+          })
+          let flush = await this.$http.get('donation/checkByUid/' + this.token)
+          this.donated = flush.data.data
+        }
       } else {
         ElMessageBox({
           title: 'Error',
@@ -131,6 +139,12 @@ export default {
       console.log(ret)
 
       this.editVisible = false
+      if (ret.data.code === 20000) {
+        ElMessage({
+          type: 'success',
+          message: '修改成功！',
+        })
+      }
     },
     del(id) {
       console.log(id)
@@ -144,6 +158,8 @@ export default {
           }
       ).then(async () => {
         let ret = await this.$http.delete('/donation/' + id)
+        let flush = await this.$http.get('donation/checkByUid/' + this.token)
+        this.donated = flush.data.data
         console.log(ret)
         ElMessage({
           type: 'success',

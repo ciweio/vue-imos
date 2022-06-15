@@ -12,7 +12,7 @@
         <el-table-column prop="state" label="处理状态" width="120" sortable/>
         <el-table-column label="处理状态" width="150" fixed="right">
           <template #default="scope">
-            <el-button class="el-button" @click="approval(scope.row.did)" :disabled="scope.row.state === 1">审批
+            <el-button class="el-button" @click="approval_d(scope.row.did)" :disabled="scope.row.state === 1">审批
             </el-button>
           </template>
         </el-table-column>
@@ -25,14 +25,14 @@
         <el-table-column prop="username" label="用户名" width="120" sortable/>
         <el-table-column prop="rname" label="申领物资" width="180" sortable/>
         <el-table-column prop="rtype" label="物资种类" width="180" sortable/>
-        <el-table-column prop="isState" label="处理状态" width="120" sortable/>
+        <el-table-column prop="isstate" label="处理状态" width="120" sortable/>
         <el-table-column width="150" fixed="right">
           <template #header>
             <input class="form-control header-ele" v-model="queryField" placeholder="Search"
                    @keyup.enter="selectField_a"/>
           </template>
           <template #default="scope">
-            <el-button class="el-button" @click="approval(scope.row.rid)" :disabled="scope.row.isState ===1">审批
+            <el-button class="el-button" @click="approval_a(scope.row.rid)" :disabled="scope.row.isstate ===2">审批
             </el-button>
           </template>
         </el-table-column>
@@ -65,13 +65,16 @@ export default {
   },
   async created() {
     let ret1 = await this.$http.get('donation/list')
-    let ret2 = await this.$http.get('things/list')
+    console.log(ret1)
     this.donation = ret1.data.data
+
+    let ret2 = await this.$http.get('/requisition')
+    console.log(ret2)
     this.application = ret2.data.data
   },
   methods: {
-    approval(id) {
-      console.log(id)
+    approval_d(did) {
+      console.log(did)
       ElMessageBox.confirm(
           '确认审批？',
           '提示',
@@ -81,8 +84,36 @@ export default {
             type: 'warning',
           }
       ).then(async () => {
-        let ret = await this.$http.get('donation/deal' + '?' + 'did=' + id)
+        let ret = await this.$http.get('donation/deal' + '?' + 'did=' + did)
         console.log(ret.data)
+        let flush = await this.$http.get('donation/list')
+        this.donation = flush.data.data
+        ElMessage({
+          type: 'success',
+          message: '审批成功！',
+        })
+      }).catch(() => {
+        ElMessage({
+          type: 'info',
+          message: '审批取消',
+        })
+      })
+    },
+    approval_a(rid) {
+      console.log(rid)
+      ElMessageBox.confirm(
+          '确认审批？',
+          '提示',
+          {
+            confirmButtonText: '同意',
+            cancelButtonText: '取消',
+            type: 'warning',
+          }
+      ).then(async () => {
+        let ret = await this.$http.put('/requisition/approval/' + rid)
+        console.log(ret)
+        let flush = await this.$http.get('/requisition')
+        this.application = flush.data.data
         ElMessage({
           type: 'success',
           message: '审批成功！',

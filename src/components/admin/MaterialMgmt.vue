@@ -26,7 +26,7 @@
           </template>
         </el-table-column>
       </el-table>
-      <add-material/>
+      <el-button style="margin-left: 16px" @click="drawer = true" class="m-0">+</el-button>
     </el-tab-pane>
 
     <el-tab-pane label="医用品">
@@ -55,7 +55,7 @@
           </template>
         </el-table-column>
       </el-table>
-      <add-material/>
+      <el-button style="margin-left: 16px" @click="drawer = true" class="m-0">+</el-button>
     </el-tab-pane>
 
     <el-tab-pane label="Tab1">
@@ -68,24 +68,65 @@
       TestText3
     </el-tab-pane>
   </el-tabs>
+
+  <el-drawer v-model="drawer" title="添加" :direction="direction" :size="size">
+    <template #default>
+      <div class="drawer-body">
+        <div class="body-item">
+          <el-input v-model="material_e.mname" placeholder="名称"/>
+        </div>
+        <div class="body-item">
+          <el-input v-model="material_e.picture" placeholder="图片"/>
+        </div>
+        <div class="body-item">
+          <el-input v-model="material_e.count" placeholder="数量"/>
+        </div>
+        <div class="body-item">
+          <el-input v-model="material_e.code" placeholder="编码"/>
+        </div>
+        <div class="body-item">
+          <el-select v-model="material_e.type" placeholder="请选择物资种类">
+            <el-option label="食物" value="食品类"/>
+            <el-option label="医用品" value="医用类"/>
+          </el-select>
+        </div>
+      </div>
+    </template>
+    <template #footer>
+      <div style="flex: auto">
+        <el-button type="primary" @click="AddMaterial">confirm</el-button>
+      </div>
+    </template>
+  </el-drawer>
 </template>
 
 <script>
 import ModifyButton from './ModifyMaterial.vue'
-import AddMaterial from './AddMaterial.vue'
 import {ElMessage, ElMessageBox} from "element-plus";
+import {ref} from 'vue'
+import {ElButton, ElDrawer} from 'element-plus'
 
 export default {
   name: "MaterialMgmt",
   components: {
     ModifyButton,
-    AddMaterial
   },
   data() {
     return {
       foodstuff: [],
       material: [],
       queryField: '',
+
+      drawer: ref(false),
+      direction: 'btt',
+      size: 250,
+      material_e: ref({
+        mname: '',
+        picture: '',
+        count: '',
+        code: '',
+        type: ''
+      })
     }
   },
   async created() {
@@ -97,6 +138,23 @@ export default {
       let ret2 = await this.$http.get('things/listType' + '?type=' + '医用类')
       this.foodstuff = ret1.data.data
       this.material = ret2.data.data
+    },
+    async AddMaterial() {
+      let ret = await this.$http.post('/things/add', this.material_e)
+      console.log(ret)
+      this.drawer = false
+      await this.dataFlush()
+      ElMessage({
+        type: 'success',
+        message: '添加成功！',
+      })
+      this.material_e = ref({
+        mname: '',
+        picture: '',
+        count: '',
+        code: '',
+        type: ''
+      })
     },
     async del(id) {
       console.log(id)
@@ -112,6 +170,7 @@ export default {
           .then(async () => {
             let ret = await this.$http.delete('/things' + '/' + id)
             console.log(ret)
+            await this.dataFlush()
             ElMessage({
               type: 'success',
               message: '删除成功！',
@@ -145,7 +204,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 .demo-tabs > .el-tabs__content {
   padding: 10px;
   color: #6b778c;
@@ -156,5 +215,15 @@ export default {
 .header-ele {
   width: 130px;
   height: 30px;
+}
+
+.drawer-body {
+  height: 40px;
+
+  .body-item {
+    display: inline-block;
+    margin: 10px;
+    width: 15%;
+  }
 }
 </style>

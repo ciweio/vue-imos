@@ -16,7 +16,8 @@
                    @keyup.enter="selectField"/>
           </template>
           <template #default="scope">
-            <el-button plain class="el-button" @click="edit(scope.row)">编辑</el-button>
+            <el-button plain class="el-button" @click="edit(scope.row)" :disabled="scope.row.isstate === 2">编辑
+            </el-button>
             <el-button type="danger" plain class="el-button" @click="del(scope.row.rid)">删除</el-button>
           </template>
         </el-table-column>
@@ -92,6 +93,7 @@ export default {
         num: 0
       }),
       add_form: reactive({
+        uid: '',
         rname: '',
         rtype: '',
         num: 0
@@ -101,17 +103,31 @@ export default {
   async created() {
     this.token = localStorage.getItem('token')
     console.log(this.token)
-    let ret = await this.$http.get('things/list')
-    this.applied = ret.data.data
+    let ret = await this.$http.get('/requisition/listAllReqs/' + this.token)
+    console.log(ret)
+    this.applied = ret.data
   },
   methods: {
     addApp() {
       this.addVisible = true
     },
-    subadd() {
+    async subadd() {
       if (this.add_form.num > 0) {
+        this.add_form.uid = this.token
+        let ret = await this.$http.post('/requisition/submit', this.add_form)
+        console.log(ret)
+
         this.addVisible = false
         console.log(this.add_form)
+
+        if (ret.data.code === 20000) {
+          ElMessage({
+            type: 'success',
+            message: '申领成功！',
+          })
+          let flush = await this.$http.get('/requisition/listAllReqs/' + this.token)
+          this.applied = flush.data
+        }
       } else {
         ElMessageBox({
           title: 'Error',
@@ -125,9 +141,18 @@ export default {
       this.edit_form = row
       this.editVisible = true
     },
-    subedit() {
+    async subedit() {
+      console.log(this.edit_form)
+      let ret = await this.$http.put('/requisition/update/' + this.token, this.edit_form)
+      console.log(ret)
       this.editVisible = false
       console.log(this.edit_form)
+      if (ret.data.code === 20000) {
+        ElMessage({
+          type: 'success',
+          message: '修改成功！',
+        })
+      }
     },
     del(id) {
       console.log(id)
@@ -139,7 +164,11 @@ export default {
             cancelButtonText: '取消',
             type: 'error',
           }
-      ).then(() => {
+      ).then(async () => {
+        let ret = await this.$http.put('/requisition/delete/' + id)
+        console.log(ret)
+        let flush = await this.$http.get('/requisition/listAllReqs/' + this.token)
+        this.applied = flush.data
         ElMessage({
           type: 'success',
           message: '删除成功！',

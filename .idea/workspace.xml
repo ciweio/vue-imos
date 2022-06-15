@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a43ff3bd-37eb-4c19-aad7-530611da5dd0" name="Changes" comment="user finished -&gt; all finished(excluding interface)">
+    <list default="true" id="a43ff3bd-37eb-4c19-aad7-530611da5dd0" name="Changes" comment="interface gjl">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DeleteButton.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserLogin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserLogin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/AddMaterial.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/AddMaterial.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DataCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/AddMaterial.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/admin/MaterialMgmt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/MaterialMgmt.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/admin/ModifyMaterial.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/ModifyMaterial.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/admin/OrderMgmt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/OrderMgmt.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/admin/UserMgmt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/UserMgmt.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/user/UserApplication.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/UserApplication.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/user/UserDonation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/UserDonation.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +99,7 @@
       <workItem from="1655080881074" duration="41480000" />
       <workItem from="1655168760204" duration="33995000" />
       <workItem from="1655205510777" duration="10439000" />
-      <workItem from="1655253508832" duration="5100000" />
+      <workItem from="1655253508832" duration="20228000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1654654616266</created>
@@ -144,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655204525339</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="interface gjl">
+      <created>1655258815796</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655258815796</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +174,7 @@
     <MESSAGE value="edit readme" />
     <MESSAGE value="admin finished" />
     <MESSAGE value="user finished -&gt; all finished(excluding interface)" />
-    <option name="LAST_COMMIT_MESSAGE" value="user finished -&gt; all finished(excluding interface)" />
+    <MESSAGE value="interface gjl" />
+    <option name="LAST_COMMIT_MESSAGE" value="interface gjl" />
   </component>
 </project>

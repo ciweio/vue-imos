@@ -2,13 +2,10 @@
   <el-button @click="modifyMedical">
     编辑
   </el-button>
-  <el-dialog v-model="visible" :show-close="false" width="20%" append-to-body>
+  <el-dialog v-model="visible" width="20%" append-to-body>
     <template #header="{ close, titleId, titleClass }">
       <div class="my-header">
         <h4 :id="titleId" :class="titleClass">编辑</h4>
-        <el-button type="danger" @click="close">
-          Close
-        </el-button>
       </div>
     </template>
     <div class="my-body">
@@ -41,7 +38,7 @@
 
 <script>
 import {ref} from 'vue'
-import {ElButton, ElDialog} from 'element-plus'
+import {ElButton, ElDialog, ElMessage} from 'element-plus'
 
 export default {
   props: ['row'],
@@ -69,6 +66,10 @@ export default {
       let ret = await this.$http.post('/things/update', this.material)
       console.log(ret)
       this.visible = false
+      ElMessage({
+        type: 'success',
+        message: '编辑成功！',
+      })
     }
   }
 }
