@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a43ff3bd-37eb-4c19-aad7-530611da5dd0" name="Changes" comment="interface gjl">
+    <list default="true" id="a43ff3bd-37eb-4c19-aad7-530611da5dd0" name="Changes" comment="all finished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DataCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/AddMaterial.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/MaterialMgmt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/MaterialMgmt.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/ModifyMaterial.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/ModifyMaterial.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/admin/OrderMgmt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/OrderMgmt.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/UserMgmt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/UserMgmt.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/user/UserApplication.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/UserApplication.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/user/UserDonation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/UserDonation.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,19 +41,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Projects/WebStorm/vue-imos/src/assets/img&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\JetBrains\\apps\\WebStorm\\ch-0\\221.5591.52\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/Projects/WebStorm/vue-imos",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "D:\\JetBrains\\apps\\WebStorm\\ch-0\\221.5591.52\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Projects\WebStorm\vue-imos\src\assets\img" />
@@ -99,7 +93,10 @@
       <workItem from="1655080881074" duration="41480000" />
       <workItem from="1655168760204" duration="33995000" />
       <workItem from="1655205510777" duration="10439000" />
-      <workItem from="1655253508832" duration="20228000" />
+      <workItem from="1655253508832" duration="20465000" />
+      <workItem from="1655452323387" duration="811000" />
+      <workItem from="1655453385864" duration="19000" />
+      <workItem from="1655778759558" duration="853000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1654654616266</created>
@@ -150,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655258815796</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="all finished">
+      <created>1655276919614</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655276919614</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +179,8 @@
     <MESSAGE value="admin finished" />
     <MESSAGE value="user finished -&gt; all finished(excluding interface)" />
     <MESSAGE value="interface gjl" />
-    <option name="LAST_COMMIT_MESSAGE" value="interface gjl" />
+    <MESSAGE value="finished" />
+    <MESSAGE value="all finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="all finished" />
   </component>
 </project>

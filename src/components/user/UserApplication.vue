@@ -9,12 +9,8 @@
         <el-table-column prop="num" label="申领数量" width="150" sortable/>
         <el-table-column prop="sdate" label="申领日期" width="260" sortable/>
         <el-table-column prop="udate" label="审核时间" width="260" sortable/>
-        <el-table-column prop="isstate" label="状态" width="140" sortable/>
-        <el-table-column width="160" fixed="right">
-          <template #header>
-            <input class="form-control header-ele" v-model="queryField" placeholder="Search"
-                   @keyup.enter="selectField"/>
-          </template>
+        <el-table-column prop="isstate" label="审核状态" width="140" sortable/>
+        <el-table-column label="操作" width="160" fixed="right">
           <template #default="scope">
             <el-button plain class="el-button" @click="edit(scope.row)" :disabled="scope.row.isstate === 2">编辑
             </el-button>
@@ -82,7 +78,6 @@ export default {
     return {
       token: 0,
       applied: [],
-      queryField: '',
 
       editVisible: ref(false),
       addVisible: ref(false),
@@ -180,10 +175,6 @@ export default {
         // })
       })
     },
-    selectField() {
-      console.log(this.queryField)
-      this.queryField = ''
-    }
   }
 }
 </script>

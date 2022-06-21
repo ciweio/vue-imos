@@ -10,7 +10,7 @@
         <el-table-column prop="count" label="捐赠数量" width="120" sortable/>
         <el-table-column prop="findate" label="提交日期" width="180" sortable/>
         <el-table-column prop="state" label="处理状态" width="120" sortable/>
-        <el-table-column label="处理状态" width="150" fixed="right">
+        <el-table-column label="操作" width="150" fixed="right">
           <template #default="scope">
             <el-button class="el-button" @click="approval_d(scope.row.did)" :disabled="scope.row.state === 1">审批
             </el-button>
@@ -26,11 +26,7 @@
         <el-table-column prop="rname" label="申领物资" width="180" sortable/>
         <el-table-column prop="rtype" label="物资种类" width="180" sortable/>
         <el-table-column prop="isstate" label="处理状态" width="120" sortable/>
-        <el-table-column width="150" fixed="right">
-          <template #header>
-            <input class="form-control header-ele" v-model="queryField" placeholder="Search"
-                   @keyup.enter="selectField_a"/>
-          </template>
+        <el-table-column label="操作" width="150" fixed="right">
           <template #default="scope">
             <el-button class="el-button" @click="approval_a(scope.row.rid)" :disabled="scope.row.isstate ===2">审批
             </el-button>
@@ -60,7 +56,6 @@ export default {
     return {
       donation: [],
       application: [],
-      queryField: '',
     }
   },
   async created() {
@@ -124,10 +119,6 @@ export default {
           message: '审批取消',
         })
       })
-    },
-    selectField_a() {
-      console.log(this.queryField)
-      this.queryField = ''
     },
   },
 }
