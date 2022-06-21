@@ -6,15 +6,21 @@
       <p class="subtitle m-0">Register</p>
       <div class="sub-form">
         <form class="form-control-sm">
-          <div class="col-auto mt-3">
-            <input type="text" class="form-control" id="username" placeholder="请输入用户名"
-                   v-model="User.username">
+          <div class="col-auto mt-2">
+            <input type="text" class="form-control" id="username" placeholder="请输入用户名" v-model="User.username"
+                   autocomplete="off">
           </div>
           <div class="col-auto mt-3">
-            <input type="text" class="form-control" id="mobile" placeholder="请输入手机号" v-model="User.mobile">
+            <input type="text" class="form-control" id="realname" placeholder="请输入真实姓名" v-model="User.realname"
+                   autocomplete="off">
           </div>
           <div class="col-auto mt-3">
-            <input type="email" class="form-control" id="email" placeholder="请输入邮箱（可选）" v-model="User.email">
+            <input type="text" class="form-control" id="mobile" placeholder="请输入手机号" v-model="User.mobile"
+                   autocomplete="off">
+          </div>
+          <div class="col-auto mt-3">
+            <input type="email" class="form-control" id="email" placeholder="请输入邮箱（可选）" v-model="User.email"
+                   autocomplete="off">
           </div>
           <div class="col-auto mt-3">
             <input autocomplete=“off” type="password" class="form-control" id="password" placeholder="请输入密码"
@@ -24,7 +30,13 @@
             <input autocomplete=“off” type="password" class="form-control" id="confirm" placeholder="请确认密码"
                    v-model="cfm">
           </div>
-          <div class="col-auto mt-5">
+          <div class="col-auto mt-3">
+            <el-select class="form-con" v-model="User.type" placeholder="账户类型">
+              <el-option label="用户" value="1"/>
+              <el-option label="管理员" value="0"/>
+            </el-select>
+          </div>
+          <div class="col-auto mt-4">
             <button type="button" class="btn btn-primary mb-3" @click="addUser">注册</button>
           </div>
         </form>
@@ -64,6 +76,8 @@ export default {
         mobile: '',
         email: '',
         password: '',
+        realname: '',
+        type: ''
       },
       cfm: '',
       reg_username: /^\w{4,16}$/,
@@ -81,38 +95,59 @@ export default {
     async addUser() {
       if (!!(this.User.username && this.User.mobile && this.User.password && this.cfm)) {
         if (!!this.User.username.match(this.reg_username)) {
-          if (!!this.User.mobile.match(this.reg_mobile)) {
-            if (!!this.User.password.match(this.reg_password)) {
-              if (this.User.password === this.cfm) {
-                let ret = await this.$http.post('user/register', this.User)
-                // console.log(ret.data)
-                if (ret.data.code === 20000) {
-                  localStorage.setItem('token', ret.data.data.uid)
-                  this.$router.push('/home/user').then(() => {
+          if (this.User.realname !== '') {
+            if (!!this.User.mobile.match(this.reg_mobile)) {
+              if (!!this.User.password.match(this.reg_password)) {
+                if (this.User.password === this.cfm) {
+                  if (this.User.type !== '') {
+                    console.log(this.User)
+                    let ret = await this.$http.post('user/register', this.User)
+                    // console.log(ret.data)
+                    if (ret.data.code === 20000) {
+                      localStorage.setItem('token', ret.data.data.uid)
+                      this.$router.push('/home/user').then(() => {
+                        ElMessage({
+                          showClose: true,
+                          message: '注册成功！已为您自动跳转到主页',
+                          type: 'success',
+                          offset: -2
+                        })
+                        console.log(localStorage.getItem('token'))
+                      })
+                    } else if (ret.data.code === 500) {
+                      ElMessage({
+                        showClose: true,
+                        message: '手机号已被占用！',
+                        type: 'error',
+                        offset: -2
+                      })
+                      localStorage.removeItem('token')
+                    } else {
+                      console.log('unexpected error')
+                      localStorage.removeItem('token')
+                    }
+                  } else {
                     ElMessage({
                       showClose: true,
-                      message: '注册成功！已为您自动跳转到主页',
-                      type: 'success',
+                      message: '账户类型不能为空！',
+                      type: 'error',
                       offset: -2
                     })
-                    console.log(localStorage.getItem('token'))
-                  })
-                } else if (ret.data.code === 500) {
+                    localStorage.removeItem('token')
+                  }
+                } else {
                   ElMessage({
                     showClose: true,
-                    message: '手机号已被占用！',
+                    message: '两次密码输入不一致！',
                     type: 'error',
                     offset: -2
                   })
-                  localStorage.removeItem('token')
-                } else {
-                  console.log('unexpected error')
                   localStorage.removeItem('token')
                 }
               } else {
                 ElMessage({
                   showClose: true,
-                  message: '两次密码输入不一致！',
+                  message: '密码6位字符以上，支持且至少一个数字、一个字母',
                   type: 'error',
                   offset: -2
                 })
@@ -121,7 +156,7 @@ export default {
             } else {
               ElMessage({
                 showClose: true,
-                message: '密码支持数字、字母且至少一个数字、一个字母',
+                message: '请输入正确的手机号！',
                 type: 'error',
                 offset: -2
               })
@@ -130,7 +165,7 @@ export default {
           } else {
             ElMessage({
               showClose: true,
-              message: '请输入正确的手机号！',
+              message: '真实姓名不能为空！',
               type: 'error',
               offset: -2
             })
@@ -205,7 +240,7 @@ export default {
 
     .sub-form {
       position: relative;
-      top: -60px;
+      top: -90px;
 
       .form-control-sm {
         .form-control {
@@ -213,8 +248,20 @@ export default {
           font-family: "等线 Light", serif;
         }
 
+        .form-con {
+          width: 264px;
+        }
+
         #username {
           background-image: url("../assets/icons/icon_register/用户名.svg");
+          background-repeat: no-repeat;
+          background-size: 8%;
+          padding-left: 40px;
+          background-position: 5px 7px;
+        }
+
+        #realname {
+          background-image: url("../assets/icons/icon_register/姓名.svg");
           background-repeat: no-repeat;
           background-size: 8%;
           padding-left: 40px;
@@ -270,7 +317,7 @@ export default {
       display: block;
       text-align: center;
       position: relative;
-      bottom: 60px;
+      bottom: 100px;
 
       a {
         text-decoration: underline;

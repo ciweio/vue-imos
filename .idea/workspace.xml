@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a43ff3bd-37eb-4c19-aad7-530611da5dd0" name="Changes" comment="Delete function with docking back end" />
+    <list default="true" id="a43ff3bd-37eb-4c19-aad7-530611da5dd0" name="Changes" comment="Delete function with docking back end">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserRegister.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserRegister.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +46,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/Projects/WebStorm/vue-imos",
+    "last_opened_file_path": "E:/Projects/WebStorm/vue-imos/src/assets/icons/icon_register",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "D:\\JetBrains\\apps\\WebStorm\\ch-0\\221.5591.52\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
@@ -52,9 +55,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Projects\WebStorm\vue-imos\src\assets\icons\icon_register" />
       <recent name="E:\Projects\WebStorm\vue-imos\src\assets\img" />
       <recent name="E:\Projects\WebStorm\vue-imos\src\assets\img\register" />
-      <recent name="E:\Projects\WebStorm\vue-imos\src\assets\icons\icon_register" />
       <recent name="E:\Projects\WebStorm\vue-imos\src\assets\icons" />
       <recent name="E:\Projects\WebStorm\vue-imos\src\assets" />
     </key>
@@ -92,7 +95,8 @@
       <workItem from="1655253508832" duration="20465000" />
       <workItem from="1655452323387" duration="811000" />
       <workItem from="1655453385864" duration="19000" />
-      <workItem from="1655778759558" duration="1536000" />
+      <workItem from="1655778759558" duration="1912000" />
+      <workItem from="1655783734251" duration="3455000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1654654616266</created>
@@ -157,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655779674005</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Delete function with docking back end">
+      <created>1655780555096</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1655780555096</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
